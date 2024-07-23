@@ -4,5 +4,7 @@ public enum ElementType
 {
     ADDITIF,
     ALLERGENE,
-    INGREDIENT
+    INGREDIENT,
+    MARQUE,
+    CATEGORIE
 }
