@@ -1,9 +1,9 @@
 package fr.diginamic.tp_grasps.daos;
 
+import fr.diginamic.tp_grasps.beans.TypeReservation;
+
 import java.util.List;
 import java.util.Optional;
-
-import fr.diginamic.tp_grasps.beans.TypeReservation;
 
 public class TypeReservationDao {
 	

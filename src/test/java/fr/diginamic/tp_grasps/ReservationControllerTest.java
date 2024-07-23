@@ -1,10 +1,9 @@
 package fr.diginamic.tp_grasps;
 
-import static org.junit.Assert.*;
-
+import fr.diginamic.tp_grasps.beans.Reservation;
 import org.junit.Test;
 
-import fr.diginamic.tp_grasps.beans.Reservation;
+import static org.junit.Assert.assertEquals;
 
 public class ReservationControllerTest {
 

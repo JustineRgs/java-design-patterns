@@ -1,8 +1,8 @@
 package fr.diginamic.factory.entities;
 
-import java.text.DecimalFormat;
-
 import fr.diginamic.factory.enums.Unite;
+
+import java.text.DecimalFormat;
 
 public abstract class Element
 {

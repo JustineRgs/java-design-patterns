@@ -1,9 +1,9 @@
 package fr.diginamic.tp_grasps.daos;
 
+import fr.diginamic.tp_grasps.beans.Client;
+
 import java.util.List;
 import java.util.Optional;
-
-import fr.diginamic.tp_grasps.beans.Client;
 
 public class ClientDao {
 

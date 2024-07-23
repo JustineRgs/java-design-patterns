@@ -1,47 +1,44 @@
 package fr.diginamic.tp_builder;
 
-import fr.diginamic.builder.Produit;
+import fr.diginamic.factory.ElementFactory;
+import fr.diginamic.factory.entities.Additif;
+import fr.diginamic.factory.entities.Allergene;
+import fr.diginamic.factory.entities.Element;
+import fr.diginamic.factory.entities.Ingredient;
+import fr.diginamic.factory.enums.ElementType;
+import fr.diginamic.factory.enums.Unite;
 
-import static org.junit.Assert.*;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class ProduitBuilderTest {
 
     @Test
-    public void testProduitBuilder_NominalCase() {
-        Produit produit = new Produit.ProduitBuilder()
-                .setNom("Produit 1")
-                .setDescription("Description du produit 1")
-                .setPrix(19.99)
-                .setQuantite(10)
-                .build();
-
-        System.out.println("Nom: " + produit.getNom());
-        System.out.println("Description: " + produit.getDescription());
-        System.out.println("Prix: " + produit.getPrix());
-        System.out.println("Quantite: " + produit.getQuantite());
-
-        assertEquals("Produit 1", produit.getNom());
-        assertEquals("Description du produit 1", produit.getDescription());
-        assertEquals(19.99, produit.getPrix(), 0.001);
-        assertEquals(10, produit.getQuantite());
+    public void testCreateIngredient() {
+        Element ingredient = ElementFactory.Factory(ElementType.INGREDIENT, "Tomate", 100, Unite.MILLI_GRAMMES);
+        assertTrue(ingredient instanceof Ingredient);
+        assertEquals("Tomate", ingredient.getNom());
+        assertEquals(100, ingredient.getQuantite(), 0.001);
+        assertEquals(Unite.MILLI_GRAMMES, ingredient.getUnite());
     }
 
     @Test
-    public void testProduitBuilder_AlternativeCase() {
-        Produit produit = new Produit.ProduitBuilder()
-                .setNom("Produit 2")
-                .setPrix(29.99)
-                .build();
+    public void testCreateAllergene() {
+        Element allergene = ElementFactory.Factory(ElementType.ALLERGENE, "Gluten", 0.1, Unite.MILLI_GRAMMES);
+        assertTrue(allergene instanceof Allergene);
+        assertEquals("Gluten", allergene.getNom());
+        assertEquals(0.1, allergene.getQuantite(), 0.001);
+        assertEquals(Unite.MILLI_GRAMMES, allergene.getUnite());
+    }
 
-        System.out.println("Nom: " + produit.getNom());
-        System.out.println("Description: " + produit.getDescription());
-        System.out.println("Prix: " + produit.getPrix());
-        System.out.println("Quantite: " + produit.getQuantite());
-
-        assertEquals("Produit 2", produit.getNom());
-        assertNull(produit.getDescription());
-        assertEquals(29.99, produit.getPrix(), 0.001);
-        assertEquals(0, produit.getQuantite());
+    @Test
+    public void testCreateAdditif() {
+        Element additif = ElementFactory.Factory(ElementType.ADDITIF, "E200", 0.05, Unite.MICRO_GRAMMES);
+        assertTrue(additif instanceof Additif);
+        assertEquals("E200", additif.getNom());
+        assertEquals(0.05, additif.getQuantite(), 0.001);
+        assertEquals(Unite.MICRO_GRAMMES, additif.getUnite());
     }
 }
